@@ -26,6 +26,15 @@ public class EnemyController : MonoBehaviour {
             {
                 myAnim.SetBool("GoblinAttack", false);
             }
+
+            if (lookdistance.magnitude < 9)
+            {
+                myAnim.SetBool("GobWalk", true);
+            }
+            else
+            {
+                myAnim.SetBool("GobWalk", false);
+            }
         }
 	}
 }
