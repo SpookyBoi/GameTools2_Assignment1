@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 832f4bb152825664f9ddf48b2aa4b635
+guid: d66e53ccbaea86a4a9e63e40a5659dbc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -139,7 +139,7 @@ ModelImporter:
     400130: Spine2
     400132: //RootNode
     400134: Sword_joint
-    7400000: WalkBackwards
+    7400000: WalkBack
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -170,7 +170,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: WalkBackwards
+      name: WalkBack
       takeName: Take 001
       firstFrame: 0
       lastFrame: 38

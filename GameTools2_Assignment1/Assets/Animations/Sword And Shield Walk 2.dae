@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
-  <asset><contributor><author>Mixamo</author><authoring_tool>COLLADA Mixamo exporter</authoring_tool><comments></comments></contributor><created>2018-10-27T23:34:54Z</created><modified>2018-10-27T23:34:54Z</modified><revision></revision><title></title><unit meter="0.010000"/><up_axis>Y_UP</up_axis></asset>
+  <asset><contributor><author>Mixamo</author><authoring_tool>COLLADA Mixamo exporter</authoring_tool><comments></comments></contributor><created>2018-10-29T18:46:30Z</created><modified>2018-10-29T18:46:30Z</modified><revision></revision><title></title><unit meter="0.010000"/><up_axis>Y_UP</up_axis></asset>
   <library_animations>
     <animation id="Hips-anim" name="Hips"><source id="Hips-Matrix-animation-input"><float_array id="Hips-Matrix-animation-input-array" count="39">
 
