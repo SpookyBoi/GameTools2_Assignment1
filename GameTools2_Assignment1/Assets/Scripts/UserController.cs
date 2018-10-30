@@ -7,6 +7,8 @@ public class UserController : MonoBehaviour {
     private float _Rotation;
     private float _Move;
     private bool _Sprint;
+    private bool _Slash;
+    private bool _Block;
 
     private PlayerController _Player;
 
@@ -32,6 +34,8 @@ public class UserController : MonoBehaviour {
     {
         _Rotation = Input.GetAxis("Horizontal");
         //_Move = Input.GetAxis("Vertical");
+        _Slash = Input.GetMouseButtonDown(0);
+        _Block = Input.GetMouseButton(1);
 
         if (_Sprint == true)
         {
@@ -42,6 +46,7 @@ public class UserController : MonoBehaviour {
             _Move = Mathf.Clamp(Input.GetAxis("Vertical"), -0.5f, 0.5f);
         }
 
-        _Player.Movement(_Rotation, _Move);
+
+        _Player.Movement(_Rotation, _Move, _Slash, _Block);
     }
 }

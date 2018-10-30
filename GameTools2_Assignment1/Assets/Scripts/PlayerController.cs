@@ -11,9 +11,23 @@ public class PlayerController : MonoBehaviour {
         _myAnim = GetComponent<Animator>();
 	}
 	
-	public void Movement(float rotation, float move)
+	public void Movement(float rotation, float move, bool slash, bool block)
     {
         _myAnim.SetFloat("Rotation", rotation);
         _myAnim.SetFloat("Move", move);
+        
+        if (slash)
+        {
+            _myAnim.SetTrigger("Slash");
+        }
+
+        if (block)
+        {
+            _myAnim.SetBool("Block", true);
+        }
+        else
+        {
+            _myAnim.SetBool("Block", false);
+        }
     }
 }
