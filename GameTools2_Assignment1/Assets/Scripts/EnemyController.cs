@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+
 public class EnemyController : MonoBehaviour {
 
     public Transform _player;
@@ -14,12 +15,9 @@ public class EnemyController : MonoBehaviour {
     public Transform _target;
     public UnityEvent _death;
     public int _DamageDone;
-    // UnityEvent _Attack;
-    //public UnityEvent _NotAttacking;
-    //public UnityEvent _Start;
 
 
-	void Start ()
+    void Start ()
     {
         _myAnim = GetComponent<Animator>();
 
@@ -30,7 +28,7 @@ public class EnemyController : MonoBehaviour {
 	
 	void Update ()
     {
-		if(Vector3.Distance(_player.position, this.transform.position) < 15)
+        if (Vector3.Distance(_player.position, this.transform.position) < 15)
         {
             Vector3 lookdistance = _player.position - this.transform.position;
 
@@ -43,16 +41,14 @@ public class EnemyController : MonoBehaviour {
             {
 
             }
-            
+
             if (lookdistance.magnitude < 1 && _HP > 1)
             {
                 _myAnim.SetBool("GoblinAttack", true);
-                //_Attack.Invoke();
             }
             else
             {
                 _myAnim.SetBool("GoblinAttack", false);
-                //_NotAttacking.Invoke();
             }
 
             if (lookdistance.magnitude < 8 && _HP > 1)
@@ -69,15 +65,22 @@ public class EnemyController : MonoBehaviour {
                 _myAnim.SetBool("GobDeath", true);
                 _death.Invoke();
             }
-                _EnemySlider.value = _HP;
 
+             _EnemySlider.value = _HP;
         }
-
     }
 
     public void GobHit()
     {
-        //PlayerController _Player = gameObject.GetComponent<PlayerController>();
-        GameObject.Find("Player").GetComponent<PlayerController>()._HP -= _DamageDone;
+        if(Input.GetMouseButton(1))
+        {
+            GameObject.Find("Player").GetComponent<PlayerController>()._HP -= 0;
+        }
+
+        else
+        {
+            GameObject.Find("Player").GetComponent<PlayerController>()._HP -= _DamageDone;
+        }
+       
     }
 }
