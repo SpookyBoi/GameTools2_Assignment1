@@ -10,6 +10,7 @@ public class UserController : MonoBehaviour {
     private bool _Slash;
     private bool _Block;
     private bool _Impact;
+    private bool _Jump;
 
     private PlayerController _Player;
 
@@ -37,6 +38,7 @@ public class UserController : MonoBehaviour {
         //_Move = Input.GetAxis("Vertical");
         _Slash = Input.GetMouseButtonDown(0);
         _Block = Input.GetMouseButton(1);
+        _Jump = Input.GetKeyDown(KeyCode.Space);
 
         if (_Sprint == true)
         {
@@ -48,6 +50,6 @@ public class UserController : MonoBehaviour {
         }
 
 
-        _Player.Movement(_Rotation, _Move, _Slash, _Block, _Impact);
+        _Player.Movement(_Rotation, _Move, _Slash, _Block, _Impact, _Jump);
     }
 }
