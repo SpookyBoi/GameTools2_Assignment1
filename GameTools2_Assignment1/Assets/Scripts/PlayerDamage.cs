@@ -30,6 +30,7 @@ public class PlayerDamage : MonoBehaviour {
         else if (_Ready)
         {
             StartCoroutine(Damage(_Player));
+            
         }
     }
 

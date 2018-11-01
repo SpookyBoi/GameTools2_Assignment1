@@ -21,10 +21,15 @@ public class PlayerController : MonoBehaviour {
         _HP = _MaxHP;
 	}
 	
-	public void Movement(float rotation, float move, bool slash, bool block, bool impact, bool jump)
+	public void Movement(float rotation, float move, bool slash, bool block, bool impact, bool jump, bool runSlash)
     {
         _myAnim.SetFloat("Rotation", rotation);
         _myAnim.SetFloat("Move", move);
+
+        if (runSlash)
+        {
+            _myAnim.SetTrigger("RunSlash");
+        }
 
         if (jump)
         {
