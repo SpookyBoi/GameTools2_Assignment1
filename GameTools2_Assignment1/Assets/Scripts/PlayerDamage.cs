@@ -18,7 +18,7 @@ public class PlayerDamage : MonoBehaviour {
 		
 	}
 
-    void OnTriggerStay(Collider _col)
+    /*void OnTriggerStay(Collider _col)
     {
         PlayerController _Player = _col.gameObject.GetComponent<PlayerController>();
 
@@ -31,6 +31,13 @@ public class PlayerDamage : MonoBehaviour {
         {
             StartCoroutine(Damage(_Player));
         }
+    }*/
+
+    public void GobHit()
+    {
+        PlayerController _Player = gameObject.GetComponent<PlayerController>();
+        StartCoroutine(Damage(_Player));
+
     }
 
     IEnumerator Damage(PlayerController _Player)
