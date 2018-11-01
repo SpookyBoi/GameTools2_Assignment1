@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour {
     public Transform _target;
     public UnityEvent _death;
     public int _DamageDone;
+    private Animator _PlayerAnim;
 
 
     void Start ()
@@ -72,6 +73,8 @@ public class EnemyController : MonoBehaviour {
 
     public void GobHit()
     {
+        _PlayerAnim = GameObject.Find("Player").GetComponent<Animator>();
+
         if(Input.GetMouseButton(1))
         {
             GameObject.Find("Player").GetComponent<PlayerController>()._HP -= 0;
@@ -80,6 +83,7 @@ public class EnemyController : MonoBehaviour {
         else
         {
             GameObject.Find("Player").GetComponent<PlayerController>()._HP -= _DamageDone;
+            _PlayerAnim.SetTrigger("Impact");
         }
        
     }

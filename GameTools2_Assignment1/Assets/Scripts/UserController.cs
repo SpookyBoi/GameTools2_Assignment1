@@ -9,6 +9,7 @@ public class UserController : MonoBehaviour {
     private bool _Sprint;
     private bool _Slash;
     private bool _Block;
+    private bool _Impact;
 
     private PlayerController _Player;
 
@@ -47,6 +48,6 @@ public class UserController : MonoBehaviour {
         }
 
 
-        _Player.Movement(_Rotation, _Move, _Slash, _Block);
+        _Player.Movement(_Rotation, _Move, _Slash, _Block, _Impact);
     }
 }

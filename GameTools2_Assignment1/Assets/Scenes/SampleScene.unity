@@ -1080,6 +1080,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 047ef0f3e0ba6bd44a5e68a3fd436faf, type: 2}
+    - target: {fileID: 100004, guid: eef7069de112b754188b1a6a236e144c, type: 3}
+      propertyPath: m_Name
+      value: Goblin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eef7069de112b754188b1a6a236e144c, type: 3}
   m_IsPrefabAsset: 0
