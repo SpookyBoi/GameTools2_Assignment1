@@ -25,8 +25,7 @@ public class EnemyDamage : MonoBehaviour {
 
         _EnemyAnim = _Enemy.GetComponent<Animator>();
 
-
-        if (_Enemy == null && !_Ready)
+        if (_Enemy == null && !_Ready || Input.GetMouseButton(1))//The mouse button part is to prevent the sword from damaging the enemy while blocking since the damage collider can hit the enemy while in the block animation
         {
             return;
         }

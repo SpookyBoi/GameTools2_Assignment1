@@ -1652,6 +1652,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1483970513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1483970506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df791d4d71175a343b39463a1bedd742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Bloodprint: {fileID: 1996479905909408, guid: 23728ac8d50207e4684d91ca9481ba67,
+    type: 2}
+  _myAnim: {fileID: 0}
+  _rightFootTransform: {fileID: 0}
+  _leftFootTransform: {fileID: 0}
 --- !u!1 &1576638811
 GameObject:
   m_ObjectHideFlags: 0

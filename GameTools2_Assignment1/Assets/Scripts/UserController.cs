@@ -32,7 +32,7 @@ public class UserController : MonoBehaviour {
             _Sprint = false;
         }
 
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) && Input.GetMouseButtonDown(0))
         {
             _RunSlash = true;
         }
@@ -56,10 +56,8 @@ public class UserController : MonoBehaviour {
     void FixedUpdate()
     {
         _Rotation = Input.GetAxis("Horizontal");
-        //_Slash = Input.GetMouseButtonDown(0);
         _Block = Input.GetMouseButton(1);
         _Jump = Input.GetKeyDown(KeyCode.Space);
-       // _RunSlash = Input.GetMouseButtonDown(0);
 
 
         if (_Sprint == true)

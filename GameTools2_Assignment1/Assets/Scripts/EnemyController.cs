@@ -68,6 +68,7 @@ public class EnemyController : MonoBehaviour {
             }
 
              _EnemySlider.value = _HP;
+
         }
     }
 

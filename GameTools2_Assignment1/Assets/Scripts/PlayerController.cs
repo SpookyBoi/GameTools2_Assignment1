@@ -57,9 +57,15 @@ public class PlayerController : MonoBehaviour {
         if (_HP <= 0)
         {
             _myAnim.SetBool("Death", true);
-            _Death.Invoke();
+            StartCoroutine("ReloadOnDeath");
         }
 
         _PlayerSlider.value = _HP;
+    }
+
+    IEnumerator ReloadOnDeath()
+    {
+        yield return new WaitForSeconds(3f);
+        _Death.Invoke();
     }
 }
