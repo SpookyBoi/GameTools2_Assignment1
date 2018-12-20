@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
 
     public Transform _player;
     static Animator _myAnim;
@@ -18,33 +19,27 @@ public class EnemyController : MonoBehaviour {
     private Animator _PlayerAnim;
 
 
-    void Start ()
+    void Start()
     {
         _myAnim = GetComponent<Animator>();
 
         _EnemySlider.maxValue = _MaxHP;
         _HP = _MaxHP;
 
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
-        if (Vector3.Distance(_player.position, this.transform.position) < 15)
+        _EnemySlider.value = _HP;
+
+        if (Vector3.Distance(_player.position, this.transform.position) < 8)
         {
             Vector3 lookdistance = _player.position - this.transform.position;
 
-            if (_HP > 1)
-            {
-                transform.LookAt(_target);
-            }
-
-            else
-            {
-
-            }
 
             if (lookdistance.magnitude < 1 && _HP > 1)
             {
+                transform.LookAt(_target);
                 _myAnim.SetBool("GoblinAttack", true);
             }
             else
@@ -66,17 +61,15 @@ public class EnemyController : MonoBehaviour {
                 _myAnim.SetBool("GobDeath", true);
                 _death.Invoke();
             }
-
-             _EnemySlider.value = _HP;
-
         }
     }
 
+   
     public void GobHit()
     {
         _PlayerAnim = GameObject.Find("Player").GetComponent<Animator>();
 
-        if(Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1))
         {
             GameObject.Find("Player").GetComponent<PlayerController>()._HP -= 0;
         }
@@ -86,6 +79,6 @@ public class EnemyController : MonoBehaviour {
             GameObject.Find("Player").GetComponent<PlayerController>()._HP -= _DamageDone;
             _PlayerAnim.SetTrigger("Impact");
         }
-       
+
     }
 }
