@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     public UnityEvent _JumpAttackExit;
 
     public bool Cooldown;
+    public bool Walljump;
 
     public float turn, turnSpeed;
 
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour {
         _MP = _MaxMP;
 
         Cooldown = true;
+
+        Walljump = false;
 	}
 
     void FixedUpdate()
@@ -55,7 +58,7 @@ public class PlayerController : MonoBehaviour {
             _myAnim.SetTrigger("RunSlash");
         }
 
-        if (jump)
+        if (jump && Walljump == false)
         {
             _myAnim.SetTrigger("Jump");
         }
@@ -110,7 +113,24 @@ public class PlayerController : MonoBehaviour {
 
         _PlayerSlider.value = _HP;
         _SkillSlider.value = _MP;
+
     }
+
+    void OnTriggerStay(Collider _col)
+    {
+        if (_col.gameObject.CompareTag("Jumpable") && Input.GetKeyDown(KeyCode.Space))
+        {
+            Walljump = true;
+            _myAnim.SetTrigger("Walljump");
+            StartCoroutine("Walljumper");
+        }
+    }
+    IEnumerator Walljumper()
+    {
+        yield return new WaitForSeconds(1f);
+        Walljump = false;
+    }
+
 
     IEnumerator ReloadOnDeath()
     {
