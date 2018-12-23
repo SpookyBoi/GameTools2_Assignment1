@@ -12,16 +12,26 @@ public class PlayerController : MonoBehaviour {
     public Slider _PlayerSlider;
     public UnityEvent _Death;
 
+    public float turn, turnSpeed;
 
-	void Start () {
+
+    void Start () {
         _myAnim = GetComponent<Animator>();
 
         _PlayerSlider.maxValue = _MaxHP;
 
         _HP = _MaxHP;
 	}
-	
-	public void Movement(float rotation, float move, bool slash, bool block, bool impact, bool jump, bool runSlash)
+
+    void FixedUpdate()
+    {
+
+        turn = (Input.mousePosition.x - (Screen.width / 2)) / Screen.width;
+
+        transform.Rotate(new Vector3(0, turn * turnSpeed, 0), Space.Self);
+    }
+
+    public void Movement(float rotation, float move, bool slash, bool block, bool impact, bool jump, bool runSlash)
     {
         _myAnim.SetFloat("Rotation", rotation);
         _myAnim.SetFloat("Move", move);

@@ -39,7 +39,6 @@ public class EnemyController : MonoBehaviour
 
             if (lookdistance.magnitude < 1 && _HP > 1)
             {
-                transform.LookAt(_target);
                 _myAnim.SetBool("GoblinAttack", true);
             }
             else
@@ -50,6 +49,7 @@ public class EnemyController : MonoBehaviour
             if (lookdistance.magnitude < 8 && _HP > 1)
             {
                 _myAnim.SetBool("GobWalk", true);
+                transform.LookAt(_target);
             }
             else
             {
