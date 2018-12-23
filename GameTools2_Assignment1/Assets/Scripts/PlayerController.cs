@@ -11,6 +11,15 @@ public class PlayerController : MonoBehaviour {
     public int _MaxHP;
     public Slider _PlayerSlider;
     public UnityEvent _Death;
+    public Slider _SkillSlider;
+    public int _MP;
+    public int _MaxMP;
+    public UnityEvent _FuryExit;
+    public UnityEvent _Fury;
+    public UnityEvent _JumpAttackHitbox;
+    public UnityEvent _JumpAttackExit;
+
+    public bool Cooldown;
 
     public float turn, turnSpeed;
 
@@ -21,6 +30,11 @@ public class PlayerController : MonoBehaviour {
         _PlayerSlider.maxValue = _MaxHP;
 
         _HP = _MaxHP;
+
+        _SkillSlider.maxValue = _MaxMP;
+        _MP = _MaxMP;
+
+        Cooldown = true;
 	}
 
     void FixedUpdate()
@@ -70,12 +84,59 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine("ReloadOnDeath");
         }
 
+        if (_MP >= 25 && Input.GetKeyDown(KeyCode.Alpha1) && Cooldown == true)
+        {
+            
+            /* _MP -= 25;
+             _myAnim.SetTrigger("JumpSlash");*/
+            _MP -= 25;
+            _myAnim.SetTrigger("JumpSlash");
+            StartCoroutine("CooldownJump");
+            _JumpAttackHitbox.Invoke();
+        }
+
+        if (_MP >= 50 && Input.GetKeyDown(KeyCode.Alpha2) && Cooldown == true)
+        {
+            _MP -= 50;
+            _myAnim.SetTrigger("FurySlash");
+            StartCoroutine("CooldownFury");
+            StartCoroutine("DamageStart");
+        }
+
+        if (Input.GetKey(KeyCode.E) && _MP < _MaxMP)
+        {
+            _MP += 3;
+        }
+
         _PlayerSlider.value = _HP;
+        _SkillSlider.value = _MP;
     }
 
     IEnumerator ReloadOnDeath()
     {
         yield return new WaitForSeconds(3f);
         _Death.Invoke();
+    }
+
+    IEnumerator DamageStart()
+    {
+        yield return new WaitForSeconds(0.4f);
+        _Fury.Invoke();
+    }
+
+    IEnumerator CooldownFury()
+    {
+        Cooldown = false;
+        yield return new WaitForSeconds(3f);
+        _FuryExit.Invoke();
+        Cooldown = true;
+    }
+
+    IEnumerator CooldownJump()
+    {
+        Cooldown = false;
+        yield return new WaitForSeconds(2f);
+        _JumpAttackExit.Invoke();
+        Cooldown = true;
     }
 }
