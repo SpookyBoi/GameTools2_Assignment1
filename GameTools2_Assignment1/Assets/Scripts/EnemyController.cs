@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
 {
 
     public Transform _player;
-    static Animator _myAnim;
+    [SerializeField] Animator _myAnim;
     public int _HP;
     public Slider _EnemySlider;
     public int _MaxHP;
