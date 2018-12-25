@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     public UnityEvent _Fury;
     public UnityEvent _JumpAttackHitbox;
     public UnityEvent _JumpAttackExit;
+    public UnityEvent _Deflector;
 
     public bool Cooldown;
     public bool Walljump;
@@ -109,6 +110,16 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.E) && _MP < _MaxMP)
         {
             _MP += 3;
+        }
+
+        if (Input.GetKey(KeyCode.Mouse1) && _HP > 0)
+        {
+            _Deflector.Invoke();
+        }
+
+        else
+        {
+            
         }
 
         _PlayerSlider.value = _HP;
