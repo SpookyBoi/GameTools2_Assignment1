@@ -20,17 +20,25 @@ public class NewEnemy : MonoBehaviour
     public float _timeBetweenShots;
     private float _shotCounter;
 
+    //HP
+    public int _HP;
+    public Slider _RangedEnemyHealth;
+    public int _MaxHP;
+
     public Transform _firePoint;
 
     private void Start()
     {
         _myNav = GetComponent<NavMeshAgent>();
         _Player = GameObject.FindGameObjectWithTag("Player");
+
+        _RangedEnemyHealth.maxValue = _MaxHP;
+        _HP = _MaxHP;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-
+        _RangedEnemyHealth.value = _HP;
         transform.LookAt(_Player.transform);
 
         _dist = Vector3.Distance(transform.position, _Player.transform.position);

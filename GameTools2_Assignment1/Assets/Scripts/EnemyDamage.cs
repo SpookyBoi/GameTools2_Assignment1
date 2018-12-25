@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour {
+public class EnemyDamage : MonoBehaviour
+{
 
     public int _DamageDone;
     public float _Duration;
     private bool _Ready;
     private Animator _EnemyAnim;
 
-	void Start ()
+    void Start()
     {
         _Ready = true;
-	}
+    }
 
-	void Update ()
+    void Update()
     {
-		
-	}
+
+    }
 
     void OnTriggerStay(Collider _col)
     {

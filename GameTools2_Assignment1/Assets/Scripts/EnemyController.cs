@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public UnityEvent _death;
     public int _DamageDone;
     private Animator _PlayerAnim;
+    public UnityEvent _destroyModel;
 
     void Start()
     {
@@ -58,10 +59,16 @@ public class EnemyController : MonoBehaviour
             {
                 _myAnim.SetBool("GobDeath", true);
                 _death.Invoke();
+                StartCoroutine("ModelDestroyer");
             }
         }
     }
 
+    IEnumerator ModelDestroyer()
+    {
+        yield return new WaitForSeconds(2f);
+        _destroyModel.Invoke();
+    }
    
     public void GobHit()
     {
