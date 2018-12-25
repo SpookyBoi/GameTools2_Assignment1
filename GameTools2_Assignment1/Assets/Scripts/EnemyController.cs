@@ -18,14 +18,12 @@ public class EnemyController : MonoBehaviour
     public int _DamageDone;
     private Animator _PlayerAnim;
 
-
     void Start()
     {
         _myAnim = GetComponent<Animator>();
 
         _EnemySlider.maxValue = _MaxHP;
         _HP = _MaxHP;
-
     }
 
     void Update()
