@@ -7,8 +7,9 @@ public class PlayerDamage : MonoBehaviour {
     public int _DamageDone;
     public int _Duration;
     private bool _Ready;
+    private Animator _PlayerAnim;
 
-	void Start ()
+    void Start ()
     {
         _Ready = true;
 	}
@@ -23,6 +24,7 @@ public class PlayerDamage : MonoBehaviour {
     void OnTriggerStay(Collider _col)
     {
         PlayerController _Player = _col.gameObject.GetComponent<PlayerController>();
+        _PlayerAnim = GameObject.Find("Player").GetComponent<Animator>();
 
         if (_Player == null && !_Ready)
         {
@@ -37,7 +39,8 @@ public class PlayerDamage : MonoBehaviour {
         else if (_Ready)
         {
             StartCoroutine(Damage(_Player));
-            
+            _PlayerAnim.SetTrigger("Impact");
+
         }
 
 
@@ -46,6 +49,7 @@ public class PlayerDamage : MonoBehaviour {
     IEnumerator Damage(PlayerController _Player)
     {
         _Player._HP -= _DamageDone;
+
 
         _Ready = false;
 

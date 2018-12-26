@@ -13,6 +13,8 @@ public class NewEnemy : MonoBehaviour
     [SerializeField] bool _Chase;
     NavMeshAgent _myNav;
     [SerializeField] Animator _myAnim;
+    public UnityEvent _Dissolve;
+    public UnityEvent _ModelDestroy;
 
     //Projectile stuff
     public Projectile _projectile;
@@ -59,7 +61,7 @@ public class NewEnemy : MonoBehaviour
             _myAnim.SetBool("isWalk", false);
         }
 
-        if (_dist < 8)
+        if (_dist < 8 && _HP > 0)
         {
             _Attack = true;
         }
@@ -83,12 +85,32 @@ public class NewEnemy : MonoBehaviour
         {
             _shotCounter = 0;
         }
+
+        if (_HP <= 0)
+        {
+            _myAnim.SetTrigger("Death");
+          
+            StartCoroutine("ModelDestroy");
+            StartCoroutine("Dissolve");
+        }
     }
 
     IEnumerator Attacking()
     {
         yield return new WaitForSeconds(1.22f);
         Instantiate(_projectile, _firePoint.position, _firePoint.rotation);
+    }
+
+    IEnumerator ModelDestroy()
+    {
+        yield return new WaitForSeconds(2f);
+        _ModelDestroy.Invoke();
+    }
+
+    IEnumerator Dissolve()
+    {
+        yield return new WaitForSeconds(0.7f);
+        _Dissolve.Invoke(); 
     }
 }
 

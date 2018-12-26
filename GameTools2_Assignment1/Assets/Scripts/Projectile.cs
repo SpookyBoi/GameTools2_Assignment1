@@ -13,11 +13,16 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider _col)
     {
-
+        
 
         if (_col.gameObject.tag == "Player" || _col.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
+        }
+
+        if (_col.gameObject.tag == "RangedEnemy")
+        {
+            GameObject.Find("RangedEnemy").GetComponent<NewEnemy>()._HP -= 10;
         }
     }
 

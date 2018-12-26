@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour {
     public UnityEvent _JumpAttackHitbox;
     public UnityEvent _JumpAttackExit;
     public UnityEvent _Deflector;
+    public UnityEvent _Over50;
+    public UnityEvent _Under50;
+    public UnityEvent _Over25;
+    public UnityEvent _Under25;
 
     public bool Cooldown;
     public bool Walljump;
@@ -88,6 +92,26 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine("ReloadOnDeath");
         }
 
+        if (_MP >= 25)
+        {
+            _Over25.Invoke();
+        }
+
+        else if (_MP < 25)
+        {
+            _Under25.Invoke();
+        }
+
+        if (_MP >= 50)
+        {
+            _Over50.Invoke();
+        }
+
+        else if (_MP < 50)
+        {
+            _Under50.Invoke();
+        }
+
         if (_MP >= 25 && Input.GetKeyDown(KeyCode.Alpha1) && Cooldown == true)
         {
             
@@ -109,7 +133,13 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.E) && _MP < _MaxMP)
         {
-            _MP += 3;
+            _MP += 1;
+            _myAnim.SetBool("isRegen", true);
+        }
+
+        else 
+        {
+            _myAnim.SetBool("isRegen", false);
         }
 
         if (Input.GetKey(KeyCode.Mouse1) && _HP > 0)
@@ -157,10 +187,12 @@ public class PlayerController : MonoBehaviour {
 
     IEnumerator CooldownFury()
     {
+        //_Under50.Invoke();
         Cooldown = false;
         yield return new WaitForSeconds(3f);
         _FuryExit.Invoke();
         Cooldown = true;
+       // _Over50.Invoke();
     }
 
     IEnumerator CooldownJump()
