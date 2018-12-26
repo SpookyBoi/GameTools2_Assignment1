@@ -103,13 +103,13 @@ public class NewEnemy : MonoBehaviour
 
     IEnumerator ModelDestroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.3f);
         _ModelDestroy.Invoke();
     }
 
     IEnumerator Dissolve()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.2f);
         _Dissolve.Invoke(); 
     }
 }
